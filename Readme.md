@@ -1,4 +1,4 @@
-# JetSmartFilters Proximity by Webbedrijf.nl
+# JetSmartFilters Proximity
 
 ## Install
 
