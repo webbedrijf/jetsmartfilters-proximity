@@ -1,0 +1,18 @@
+{
+  "autoload": {
+    "psr-4": {
+      "JetSmartFiltersProximity\\": "app/"
+    }
+  },
+  "require": {
+    "php": "^7.4",
+    "guzzlehttp/guzzle": "7.4",
+    "htmlburger/carbon-fields": "^3.3",
+    "ext-json": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": false
+    }
+  }
+}
