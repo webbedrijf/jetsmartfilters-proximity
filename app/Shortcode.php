@@ -26,6 +26,7 @@ class Shortcode
         $postType = $atts['post_type'];
         $queryId = isset($atts[ 'query_id' ]) ? $atts[ 'query_id' ] : null;
         $distanceSuffix = isset($atts[ 'distance_suffix' ]) ? $atts[ 'distance_suffix' ] : ' km';
+        $type = isset($atts[ 'type' ]) ? $atts[ 'type' ] : 'mixed';
         $distances = isset($atts[ 'distances' ]) ? explode(',', $atts[ 'distances' ]) : [10, 20, 30, 50, 100, 200];
 
         ?>
@@ -72,7 +73,7 @@ class Shortcode
 
         <div class="proximity-hide-jet">
         <div class=" jet-smart-filters-checkboxes jet-filter " data-indexer-rule="show" data-show-counter="" data-change-counter="always">
-            <div class="jet-checkboxes-list" data-query-type="meta_query" data-query-var="proximity" data-smart-filter="checkboxes" data-filter-id="6313" data-apply-type="ajax-reload" data-content-provider="jet-engine" data-additional-providers="" data-query-id="<?php echo $queryId; ?>" data-active-label="" data-layout-options="{&quot;show_label&quot;:&quot;&quot;,&quot;display_options&quot;:{&quot;show_items_label&quot;:false,&quot;show_decorator&quot;:&quot;yes&quot;,&quot;filter_image_size&quot;:&quot;full&quot;,&quot;show_counter&quot;:false}}" data-query-var-suffix="">
+            <div class="jet-checkboxes-list" data-query-type="meta_query" data-query-var="proximity" data-smart-filter="checkboxes" data-filter-id="6313" data-apply-type="<?php echo $type; ?>" data-content-provider="jet-engine" data-additional-providers="" data-query-id="<?php echo $queryId; ?>" data-active-label="" data-layout-options="{&quot;show_label&quot;:&quot;&quot;,&quot;display_options&quot;:{&quot;show_items_label&quot;:false,&quot;show_decorator&quot;:&quot;yes&quot;,&quot;filter_image_size&quot;:&quot;full&quot;,&quot;show_counter&quot;:false}}" data-query-var-suffix="">
                 <div class="jet-checkboxes-list-wrapper">
                     <div class="jet-checkboxes-list__row jet-filter-row">
                         <input type="checkbox" id="jet-proximity-check" checked class="jet-checkboxes-list__input" value="" data-label="Test">
