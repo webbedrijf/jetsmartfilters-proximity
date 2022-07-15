@@ -26,7 +26,7 @@ class Shortcode
         $postType = $atts['post_type'];
         $queryId = isset($atts[ 'query_id' ]) ? $atts[ 'query_id' ] : null;
         $distanceSuffix = isset($atts[ 'distance_suffix' ]) ? $atts[ 'distance_suffix' ] : ' km';
-        $type = isset($atts[ 'type' ]) ? $atts[ 'type' ] : 'mixed';
+        $type = isset($atts[ 'type' ]) ? $atts[ 'type' ] : 'mixed-reload';
         $distances = isset($atts[ 'distances' ]) ? explode(',', $atts[ 'distances' ]) : [10, 20, 30, 50, 100, 200];
 
         ?>
