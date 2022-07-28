@@ -35,6 +35,7 @@ class Shortcode
         <script>
             let lat = null;
             let lng = null;
+            let search = null;
 
             function initialize() {
                 var input = document.getElementById('jet-proximity-loca');
@@ -44,6 +45,7 @@ class Shortcode
 
                     lat = place.geometry.location.lat();
                     lng = place.geometry.location.lng();
+                    search = document.getElementById('jet-proximity-loca').value;
 
                     proximityQuery();
                 });
@@ -52,11 +54,12 @@ class Shortcode
             function proximityQuery() {
                 if(lat == null) return;
 
-                document.getElementById('jet-proximity-check').value = '<?php echo $postType; ?>,' + lat + ',' + lng + ',' + document.getElementById('jet-proximity-distance').value;
+                document.getElementById('jet-proximity-check').value = '<?php echo $postType; ?>,' + search.replaceAll(',', '') + ',' + lat + ',' + lng + ',' + document.getElementById('jet-proximity-distance').value;
                 document.getElementById('jet-proximity-check-button').click();
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
+
         </script>
 
         <select id="jet-proximity-distance" onchange="proximityQuery()">
@@ -90,6 +93,39 @@ class Shortcode
                 display: none;
             }
         </style>
+
+        <script>
+            /*
+             * Load from page
+             */
+            const params = new Proxy(new URLSearchParams(window.location.search), {
+                get: (searchParams, prop) => searchParams.get(prop),
+            });
+            let meta = params.meta;
+            if(meta != null) {
+                let parts = meta.split(';');
+                parts.forEach((part) => {
+                    let metaParts = part.split(':');
+                    if(metaParts.length === 2) {
+                        if(metaParts[0] === 'proximity') {
+
+                            let proximityParts = metaParts[1].split(',');
+                            if(proximityParts.length === 5) {
+
+                                document.getElementById('jet-proximity-loca').value = proximityParts[1];
+                                document.getElementById('jet-proximity-distance').selected = proximityParts[5];
+
+                                setTimeout(() => {
+                                    document.getElementById('jet-proximity-check').value = metaParts[1];
+                                    document.getElementById('jet-proximity-check-button').click();
+                                }, 1000);
+
+                            }
+                        }
+                    }
+                });
+            }
+        </script>
 
         <?php
     }

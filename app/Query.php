@@ -45,19 +45,19 @@ class Query
     function final_query($query)
     {
 
-        if( !$query[ 'proximity' ] ) {
+        if( !$query[ 'proximity' ] || !is_string($query[ 'proximity' ]) ) {
             return $query;
         }
 
         $parts = explode(',', $query[ 'proximity' ]);
-        if( count($parts) !== 4 ) {
+        if( count($parts) !== 5 ) {
             return $query;
         }
 
         $table = esc_sql($parts[ 0 ]);
-        $lat = esc_sql($parts[ 1 ]);
-        $lng = esc_sql($parts[ 2 ]);
-        $dis = esc_sql($parts[ 3 ]);
+        $lat = esc_sql($parts[ 2 ]);
+        $lng = esc_sql($parts[ 3 ]);
+        $dis = esc_sql($parts[ 4 ]);
 
         global $wpdb;
         $subquery = "SELECT
