@@ -113,7 +113,7 @@ class Shortcode
                             if(proximityParts.length === 5) {
 
                                 document.getElementById('jet-proximity-loca').value = proximityParts[1];
-                                document.getElementById('jet-proximity-distance').selected = proximityParts[5];
+                                document.getElementById('jet-proximity-distance').value = proximityParts[4];
 
                                 setTimeout(() => {
                                     document.getElementById('jet-proximity-check').value = metaParts[1];
