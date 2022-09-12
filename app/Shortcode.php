@@ -27,10 +27,11 @@ class Shortcode
         $queryId = isset($atts[ 'query_id' ]) ? $atts[ 'query_id' ] : null;
         $distanceSuffix = isset($atts[ 'distance_suffix' ]) ? $atts[ 'distance_suffix' ] : ' km';
         $type = isset($atts[ 'type' ]) ? $atts[ 'type' ] : 'mixed-reload';
+        $placeholder = isset($atts[ 'placeholder' ]) ? $atts[ 'placeholder' ] : 'Geef een locatie op';
         $distances = isset($atts[ 'distances' ]) ? explode(',', $atts[ 'distances' ]) : [10, 20, 30, 50, 100, 200];
 
         ?>
-        <input id="jet-proximity-loca" type="text" size="50">
+        <input id="jet-proximity-loca" placeholder="<?php echo $placeholder ?>" type="text" size="50">
 
         <script>
             let lat = null;
