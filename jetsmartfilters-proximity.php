@@ -3,7 +3,7 @@
  * Plugin Name: Jet SmartFilters Proximity by Webbedrijf.nl
  * Plugin URI: https://webbedrijf.nl
  * Description: Jet SmartFilters Proximity search
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Bart Fijneman
  * Author URI: https://webbedrijf.nl
  * License: GPL2

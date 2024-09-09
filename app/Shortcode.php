@@ -76,17 +76,17 @@ class Shortcode
 
 
         <div class="proximity-hide-jet">
-        <div class=" jet-smart-filters-checkboxes jet-filter " data-indexer-rule="show" data-show-counter="" data-change-counter="always">
-            <div class="jet-checkboxes-list" data-query-type="meta_query" data-query-var="proximity" data-smart-filter="checkboxes" data-filter-id="6313" data-apply-type="<?php echo $type; ?>" data-content-provider="jet-engine" data-additional-providers="" data-query-id="<?php echo $queryId; ?>" data-active-label="" data-layout-options="{&quot;show_label&quot;:&quot;&quot;,&quot;display_options&quot;:{&quot;show_items_label&quot;:false,&quot;show_decorator&quot;:&quot;yes&quot;,&quot;filter_image_size&quot;:&quot;full&quot;,&quot;show_counter&quot;:false}}" data-query-var-suffix="">
-                <div class="jet-checkboxes-list-wrapper">
-                    <div class="jet-checkboxes-list__row jet-filter-row">
-                        <input type="checkbox" id="jet-proximity-check" checked class="jet-checkboxes-list__input" value="" data-label="Test">
+            <div class=" jet-smart-filters-checkboxes jet-filter " data-indexer-rule="show" data-show-counter="" data-change-counter="always">
+                <div class="jet-checkboxes-list" data-query-type="meta_query" data-query-var="_proximity" data-smart-filter="checkboxes" data-filter-id="6313" data-apply-type="<?php echo $type; ?>" data-content-provider="jet-engine" data-additional-providers="" data-query-id="<?php echo $queryId; ?>" data-active-label="" data-layout-options="{&quot;show_label&quot;:&quot;&quot;,&quot;display_options&quot;:{&quot;show_items_label&quot;:false,&quot;show_decorator&quot;:&quot;yes&quot;,&quot;filter_image_size&quot;:&quot;full&quot;,&quot;show_counter&quot;:false}}" data-query-var-suffix="">
+                    <div class="jet-checkboxes-list-wrapper">
+                        <div class="jet-checkboxes-list__row jet-filter-row">
+                            <input type="checkbox" name="_proximity" id="jet-proximity-check" checked class="jet-checkboxes-list__input" value="" data-label="Test">
+                        </div>
                     </div>
                 </div>
+            </div><div class="apply-filters">
+                <button type="button" id="jet-proximity-check-button" class="apply-filters__button">Apply filter</button>
             </div>
-        </div><div class="apply-filters">
-            <button type="button" id="jet-proximity-check-button" class="apply-filters__button">Apply filter</button>
-        </div>
         </div>
 
         <style>
@@ -108,12 +108,15 @@ class Shortcode
                 parts.forEach((part) => {
                     let metaParts = part.split(':');
                     if(metaParts.length === 2) {
-                        if(metaParts[0] === 'proximity') {
+                        if(metaParts[0] === '_proximity') {
 
                             let proximityParts = metaParts[1].split(',');
                             if(proximityParts.length === 5) {
 
                                 document.getElementById('jet-proximity-loca').value = proximityParts[1];
+                                search = proximityParts[1];
+                                lat = proximityParts[2];
+                                lng = proximityParts[3];
                                 document.getElementById('jet-proximity-distance').value = proximityParts[4];
 
                                 setTimeout(() => {
